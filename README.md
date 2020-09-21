@@ -12,7 +12,6 @@ create virtualenvironment:
 # this will create virtualenvironment with python3
 2.virtualenv -p python3 glide
 3.source glide/bin/activate
-# mine is glide u can keep anything
 4. then install req.txt file
 
 Install requirements.txt :
