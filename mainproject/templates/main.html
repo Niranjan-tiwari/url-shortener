@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+
+    <h1>URLSHORTENER</h1>
+
+    {% if messages %}
+    <ul class="messages">
+
+
+        {% for msg in messages %}
+        <li>
+            <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+                <strong>{{msg.message}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+        </li>
+        {% endfor %}
+
+    </ul>
+    {% endif %}
+    <form class="" action="{% url 'main' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        {% if copy %}
+        <button type="button" class="btn btn-danger" onclick="Urlshortener()">Copy!</button>
+        {% else %}
+        <input type="submit" value="Shorten"/>
+        {% endif %}
+    </form>
+</div>
+
+
+<script>
+function Urlshortener() {
+let copyText = document.getElementById("id_short_url");
+
+copyText.select();
+copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+document.execCommand("copy");
+
+
+alert("URL copied to clipboard: " + copyText.value);
+}
+
+
+
+</script>
+
+{% endblock %}
